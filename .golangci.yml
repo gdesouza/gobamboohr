@@ -1,0 +1,44 @@
+version: "2"
+
+linters:
+  enable:
+    - errcheck
+    - govet
+    - ineffassign
+    - staticcheck
+    - unused
+    - bodyclose
+    - errorlint
+    - misspell
+    - nilerr
+    - revive
+    - unconvert
+
+  settings:
+    errcheck:
+      # Progress and diagnostics go to stderr on a best-effort basis: there is
+      # nowhere useful to report a failed write to stderr, and the command's
+      # real result is written to stdout and still checked.
+      exclude-functions:
+        - fmt.Fprint
+        - fmt.Fprintf
+        - fmt.Fprintln
+        - (*os.File).Close
+        - os.Remove
+
+    revive:
+      rules:
+        - name: exported
+          arguments:
+            - disableStutteringCheck
+
+  exclusions:
+    rules:
+      # Test helpers write to strings.Builder and discard the error by design.
+      - path: _test\.go
+        linters:
+          - errcheck
+
+formatters:
+  enable:
+    - gofmt
