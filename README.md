@@ -1,5 +1,7 @@
 # bamboohr
 
+[![Go](https://github.com/gdesouza/gobamboohr/actions/workflows/go.yml/badge.svg)](https://github.com/gdesouza/gobamboohr/actions/workflows/go.yml)
+
 A Go client for the [BambooHR API](https://documentation.bamboohr.com/) and a
 CLI built on top of it.
 
